@@ -9,6 +9,10 @@ const namespace = "navbar";
 const NavBar = ({ className }) => {
   const componentClassNames = classNames(namespace, className);
 
+  const onChangeTheme = (checked) => {
+    console.log(checked);
+  };
+
   return (
     <nav className={componentClassNames}>
       <ul className={`${namespace}-list`}>
@@ -49,7 +53,7 @@ const NavBar = ({ className }) => {
           </NavLink>
         </li>
       </ul>
-      <Toggle />
+      <Toggle onChangeToggle={onChangeTheme} />
     </nav>
   );
 };

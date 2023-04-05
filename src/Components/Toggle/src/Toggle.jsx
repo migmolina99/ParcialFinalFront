@@ -4,18 +4,26 @@ import classNames from "classnames";
 
 const namespace = "toggle";
 
-const Toggle = ({ className }) => {
+const Toggle = ({ className, onChangeToggle }) => {
   const componentClassNames = classNames(namespace, className);
   const [checked, setChecked] = useState(false);
 
-  const handleChange = (e) => {};
+  const handleChange = ({ target }) => {
+    setChecked(target.checked);
+    onChangeToggle(target.checked);
+  };
 
   return (
-    <label class={componentClassNames} for="toggle">
-      <input id="toggle" type="checkbox" className={`${namespace}__checkbox`} />
+    <label className={componentClassNames} htmlFor="toggle">
+      <input
+        id="toggle"
+        type="checkbox"
+        className={`${namespace}__checkbox`}
+        onChange={handleChange}
+      />
       <span className={`${namespace}__check`}>
         <span className={`${namespace}__check-text`}>
-          {checked ? "OFF" : "ON"}
+          {/* {checked ? "OFF" : "ON"} */}
         </span>
       </span>
     </label>
@@ -24,6 +32,7 @@ const Toggle = ({ className }) => {
 
 Toggle.propTypes = {
   className: PropTypes.string,
+  onChangeToggle: PropTypes.func.isRequired
 };
 
 Toggle.defaultProps = {
