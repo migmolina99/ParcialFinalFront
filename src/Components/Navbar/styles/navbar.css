@@ -1,0 +1,29 @@
+.navbar {
+  padding: 10px;
+  background-color: dodgerblue;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar-list {
+  display: flex;
+  list-style-type: none;
+}
+
+.navbar-list__item {
+  padding: 10px 20px;
+}
+
+.navbar-list__link {
+  color: #ccd1d1;
+  text-decoration: none;
+}
+
+.navbar-list__link--active {
+  color: #fff;
+}
+
+.navbar-list__item:hover {
+  cursor: pointer;
+}
