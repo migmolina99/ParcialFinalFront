@@ -2,11 +2,14 @@ import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import DentistCard from "../../DentistCard";
+import Message from "../../Message";
 
 const namespace = "dentists-list";
 
-const DentistsList = ({ dentistsList, className }) => {
-  const componentClassnames = classNames(namespace, className);
+const DentistsList = ({ dentistsList, emptyMessage, className }) => {
+  const componentClassnames = classNames(namespace, className, {
+    [`${namespace}--empty`]: dentistsList && dentistsList.length === 0,
+  });
 
   return (
     <div className={componentClassnames}>
@@ -15,13 +18,17 @@ const DentistsList = ({ dentistsList, className }) => {
         dentistsList.map((dentist) => (
           <DentistCard key={dentist.id} {...dentist} />
         ))}
+      {dentistsList && dentistsList.length === 0 && (
+        <Message>{emptyMessage}</Message>
+      )}
     </div>
   );
 };
 
 DentistsList.propTypes = {
-  dentistsList: PropTypes.arrayOf(PropTypes.shape({})),
   className: PropTypes.string,
+  emptyMessage: PropTypes.string,
+  dentistsList: PropTypes.arrayOf(PropTypes.shape({})),
 };
 
 DentistsList.defaultProps = {

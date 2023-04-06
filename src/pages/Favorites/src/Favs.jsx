@@ -13,7 +13,10 @@ const Favs = ({ className }) => {
   return (
     <main className={componentClassnames}>
       <h1 className={`${namespace}__title`}>Dentists Favs</h1>
-      <DentistList dentistsList={favoriteDentists} />
+      <DentistList
+        emptyMessage="The favorites list is empty"
+        dentistsList={favoriteDentists}
+      />
     </main>
   );
 };
