@@ -1,0 +1,44 @@
+.button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  box-sizing: border-box;
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+}
+
+.button:hover {
+  cursor: pointer;
+}
+
+.button--small {
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.button--dark {
+  background-color: #212f3d;
+}
+
+.button--primary {
+  background-color: #2e86c1;
+}
+
+.button--success {
+  background-color: green;
+}
+
+.button--warning {
+  background-color: orange;
+}
+
+.button--fullWidth {
+  width: 100%;
+}
+
+.button--disabled {
+  cursor: initial;
+  background-color: rgba(202, 207, 210, 0.5);
+}

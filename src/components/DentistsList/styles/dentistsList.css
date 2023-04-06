@@ -1,0 +1,12 @@
+.dentists-list {
+  width: 1200px;
+  margin: 20px auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 20px;
+  box-sizing: border-box;
+}
+
+.dentists-list--empty {
+  display: block;
+}
