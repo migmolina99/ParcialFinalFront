@@ -4,13 +4,13 @@ import classNames from "classnames";
 
 const namespace = "button";
 
-const Button = ({ 
+const Button = ({
   type,
   size,
-  modifier, 
+  modifier,
   disabled,
-  fullWidth, 
-  onClick ,
+  fullWidth,
+  onClick,
   className,
   children,
 }) => {
@@ -22,18 +22,18 @@ const Button = ({
   });
 
   const handleClick = () => {
-    if (disabled) return;
+    if (disabled || type === "submit") return;
     onClick();
-  }
+  };
 
   return (
-    <button 
+    <button
       type={type}
-      className={componentClassNames} 
+      className={componentClassNames}
       disabled={disabled}
       onClick={handleClick}
     >
-     { children }
+      {children}
     </button>
   );
 };
@@ -45,14 +45,15 @@ Button.propTypes = {
   text: PropTypes.string.isRequired,
   disabled: PropTypes.bool,
   onClick: PropTypes.func.isRequired,
-  children: PropTypes.node.isRequired
+  children: PropTypes.node.isRequired,
 };
 
 Button.defaultProps = {
   type: "button",
-  size: 'medium',
-  modifier: 'primary',
+  size: "medium",
+  modifier: "primary",
   disabled: false,
+  onClick: () => {},
 };
 
 export default Button;

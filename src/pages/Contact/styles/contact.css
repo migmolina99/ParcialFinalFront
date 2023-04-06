@@ -1,0 +1,24 @@
+.contact-page {
+  padding: 40px 20px;
+  min-height: 100vh;
+}
+
+.contact-page__title {
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.contact-page__paragraph {
+  margin-bottom: 40px;
+  color: #808b96;
+  text-align: center;
+}
+
+.contact-page .form {
+  margin: 0 auto;
+}
+
+.contact-page .message {
+  margin-top: 40px;
+  margin-bottom: 10px;
+}

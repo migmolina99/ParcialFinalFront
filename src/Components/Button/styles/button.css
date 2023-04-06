@@ -18,8 +18,12 @@
   border-radius: 4px;
 }
 
+.button--dark {
+  background-color: #212f3d;
+}
+
 .button--primary {
-  background-color: dodgerblue;
+  background-color: #2e86c1;
 }
 
 .button--success {

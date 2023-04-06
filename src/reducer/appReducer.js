@@ -18,6 +18,16 @@ export const appReducer = (state = [], action) => {
         ...state,
         data: Array.isArray(payload) ? [...payload] : payload,
       };
+    case actionTypes.ADD_FAVORITE_DENTIST:
+      return {
+        ...state,
+        favorites: [...state.favorites, payload],
+      };
+    case actionTypes.DELETE_FAVORITE_DENTIST:
+      return {
+        ...state,
+        favorites: state.favorites.filter((dentist) => dentist.id !== payload),
+      };
     default:
       return state;
   }

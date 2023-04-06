@@ -1,0 +1,9 @@
+.home-page {
+  padding: 40px 20px;
+  min-height: 100vh;
+}
+
+.home-page__title {
+  margin-bottom: 20px;
+  text-align: center;
+}

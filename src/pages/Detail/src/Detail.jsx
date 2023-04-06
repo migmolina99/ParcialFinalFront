@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
-import { useApp } from "../components/utils/global.context";
 import { useParams } from "react-router-dom";
-import DentistCard from "../components/DentistCard";
+import { useApp } from "../../../components/utils/global.context";
+import DentistCard from "../../../components/DentistCard";
 
 const namespace = "detail-page";
 const API_BASE_URL = "https://jsonplaceholder.typicode.com";
@@ -18,9 +18,10 @@ const Detail = ({ className }) => {
   }, []);
 
   return (
-    <div className={componentClassNames}>
-     <DentistCard type="detail" {...dentistData} /> 
-    </div>
+    <main className={componentClassNames}>
+      <h1 className={`${namespace}__title`}>Detail Dentist { id }</h1>
+      <DentistCard type="detail" {...dentistData} />
+    </main>
   );
 };
 

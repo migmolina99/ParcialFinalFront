@@ -5,15 +5,11 @@ import DentistCard from "../../DentistCard";
 
 const namespace = "dentists-list";
 
-const DentistsList = ({ dentistsList, emptyMessage, className }) => {
+const DentistsList = ({ dentistsList, className }) => {
   const componentClassnames = classNames(namespace, className);
-  console.log('list ---> ', dentistsList);
 
   return (
     <div className={componentClassnames}>
-      {dentistsList && dentistsList.length === 0 && (
-        <span className={`${namespace}__empty-message`}>{emptyMessage}</span>
-      )}
       {dentistsList &&
         dentistsList.length > 0 &&
         dentistsList.map((dentist) => (
@@ -25,13 +21,11 @@ const DentistsList = ({ dentistsList, emptyMessage, className }) => {
 
 DentistsList.propTypes = {
   dentistsList: PropTypes.arrayOf(PropTypes.shape({})),
-  emptyMessage: PropTypes.string.isRequired,
   className: PropTypes.string,
 };
 
 DentistsList.defaultProps = {
   className: "",
-  emptyMessage: "Empty message"
 };
 
 export default DentistsList;

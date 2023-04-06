@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 import classNames from "classnames";
 import doctorInage from "../../../assets/images/doctor.jpg";
 import { useNavigate } from "react-router-dom";
+import { useApp } from "../../utils/global.context";
+import icons from "../../icons";
 
 const namespace = "dentist-card";
 
@@ -16,18 +18,51 @@ const DentistCard = ({
   username,
   className,
 }) => {
-  const navigate = useNavigate();
   const componentClassNames = classNames(namespace, className, {
     [`${namespace}--detail`]: type === "detail",
   });
+
+  const { Heart, HeartFill } = icons;
+  const navigate = useNavigate();
+
+  const { 
+    favorites: favoriteDentists, 
+    addFavoriteDentist,
+    deleteFavoriteDentist, 
+  } = useApp();
 
   const handleClickCard = () => {
     navigate(`/detail/${id}`);
   };
 
+  const handleClickFavorite = () => {
+    const isFavorite = isFavoriteDentist();
+    if (!isFavorite) {
+      addFavoriteDentist({
+        id,
+        name,
+        username,
+        phone,
+        website,
+      });
+    } else {
+      deleteFavoriteDentist(id);
+    }
+  };
+
+  const isFavoriteDentist = () => {
+    return favoriteDentists.find((dentist) => dentist.id === id);
+  };
+
   return (
     <div className={componentClassNames}>
       <div className={`${namespace}__header`}>
+        <button
+          className={`${namespace}__button-icon`}
+          onClick={handleClickFavorite}
+        >
+          {isFavoriteDentist() ? <HeartFill /> : <Heart />}
+        </button>
         <img src={doctorInage} alt={name} className={`${namespace}__image`} />
       </div>
       <div className={`${namespace}__body`}>

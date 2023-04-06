@@ -1,4 +1,16 @@
 
+/* 
+   Pages
+*/
+@import "../pages/Home/index.css";
+@import "../pages/Contact/index.css";
+@import "../pages/Favorites/index.css";
+@import "../pages/Detail/index.css";
+
+/* 
+    Components
+*/
+
 @import "../components/Toggle/index.css";
 @import "../components/Navbar/index.css";
 @import "../components/Form/index.css";
@@ -6,6 +18,8 @@
 @import "../components/Button/index.css";
 @import "../components/DentistsList/index.css";
 @import "../components/DentistCard/index.css";
+@import "../components/Message/index.css";
+@import "../components/Spinner/";
 @import "../components/Footer/index.css";
 
 

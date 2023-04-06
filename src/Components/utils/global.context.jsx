@@ -1,12 +1,13 @@
-import { createContext, useEffect, useContext, useReducer } from "react";
+import { createContext, useContext, useEffect, useReducer } from "react";
 
 import { actionTypes } from "../../reducer/actionTypes";
 import { appReducer } from "../../reducer/appReducer";
-import useFetch from "../../hooks/useFetch";
 
 export const initialState = {
   theme: "",
+  loading: false,
   data: [],
+  favorites: JSON.parse(localStorage.getItem("favoriteDentists")) || [],
 };
 
 export const ContextGlobal = createContext();
@@ -26,7 +27,7 @@ export const ContextProvider = ({ children }) => {
       type: actionTypes.SET_LOADING,
       payload: true,
     });
-    
+
     try {
       const resp = await fetch(url);
       if (!resp.ok) {
@@ -49,10 +50,31 @@ export const ContextProvider = ({ children }) => {
     }
   };
 
+  const addFavoriteDentist = (dentist) => {
+    dispatch({
+      type: actionTypes.ADD_FAVORITE_DENTIST,
+      payload: dentist
+    });
+  };
+
+  const deleteFavoriteDentist = (dentistId) => {
+    dispatch({
+      type: actionTypes.DELETE_FAVORITE_DENTIST,
+      payload: dentistId,
+    });
+  };
+
+  useEffect(() => {
+    console.log('Change localStorage');
+    localStorage.setItem("favoriteDentists", JSON.stringify(appState.favorites));
+  }, [appState.favorites]);
+
   const value = {
     ...appState,
     setAppTheme,
     getDentistsData,
+    addFavoriteDentist,
+    deleteFavoriteDentist,
   };
 
   return (
@@ -67,55 +89,3 @@ export const useApp = () => {
   }
   return context;
 };
-
-// const TodoContext = createContext();
-
-// const getInitState = () => {
-//   return [];
-//   // return JSON.parse(localStorage.getItem("taskList")) || [];
-// };
-
-// export const TodoContextProvider = ({ children }) => {
-//   const [todoList, dispatch] = useReducer(todoReducer, [], getInitState);
-
-//   const addTask = (newTask) => {
-//     dispatch({
-//       type: actionTypes.ADD_TASK,
-//       payload: newTask
-//     })
-//   };
-
-//   const deleteTask = (taskId) => {};
-
-//   const completeTask = (taskId) => {};
-
-//   const editTask = (taskId, newTaskInfo) => {};
-
-//   const value = {
-//     todoList,
-//     addTask,
-//     editTask,
-//     deleteTask,
-//     completeTask,
-//     todoCount: todoList.length,
-//     pendingTodoCount: todoList.filter((task) => !task.completed).length,
-//   };
-
-//   // useEffect(() => {
-//   //   localStorage.setItem("taskList", JSON.stringify(todoList));
-//   // }, [todoList]);
-
-//   return (
-//     <TodoContext.Provider value={value}>
-//       {children}
-//     </TodoContext.Provider>
-//   );
-// };
-
-// export const useTodo = () => {
-//   const context = useContext(TodoContext);
-//   if (!context) {
-//     throw new Error("Context Error");
-//   }
-//   return context;
-// };

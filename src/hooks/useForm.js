@@ -3,6 +3,7 @@ import { useState } from "react";
 const useForm = (initialValues, validateForm, submitFunction) => {
   const [form, setForm] = useState(initialValues);
   const [errors, setErrors] = useState({});
+  const [submited, setSubmited] = useState(false);
 
   const handleChange = ({ target }) => {
     const { name, value } = target;
@@ -14,15 +15,14 @@ const useForm = (initialValues, validateForm, submitFunction) => {
 
   const handleBlur = (e) => {
     handleChange(e);
+    setSubmited(false);
     setErrors(validateForm(form));
   };
 
   const handleSubmit = () => {
     setErrors(validateForm(form));
-
-    if (Object.keys(errors).length === 0) {
-      submitFunction(form);
-    }
+    submitFunction(form);
+    setSubmited(true);
   };
 
   const handleReset = (e) => {
@@ -33,6 +33,7 @@ const useForm = (initialValues, validateForm, submitFunction) => {
   return {
     form,
     errors,
+    submited,
     handleChange,
     handleBlur,
     handleSubmit,

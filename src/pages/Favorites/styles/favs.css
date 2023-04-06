@@ -1,0 +1,15 @@
+.favorites-page {
+  padding: 40px 20px;
+  min-height: 100vh;
+}
+
+.favorites-page__title {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.favorites-page__paragraph {
+  margin-bottom: 40px;
+  color: #808b96;
+  text-align: center;
+}

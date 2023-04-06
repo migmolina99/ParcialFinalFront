@@ -1,0 +1,29 @@
+.message {
+  padding: 15px 16px;
+  font-size: 14px;
+  color: #fff;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+}
+
+.message__icon {
+  display: inline-block;
+  margin-right: 8px;
+}
+
+.message--neutral {
+  background-color: #3483fa;
+}
+
+.message--success {
+  background-color: #00a650;
+}
+
+.message--warning {
+  background-color: #f73;
+}
+
+.message--error {
+  background-color: rgba(242, 61, 79, 0.8);
+}
