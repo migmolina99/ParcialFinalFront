@@ -1,19 +1,35 @@
-import React from 'react'
+import React, { useEffect } from "react";
+import PropTypes from "prop-types";
+import classNames from "classnames";
+import { useApp } from "../components/utils/global.context";
+import { useParams } from "react-router-dom";
+import DentistCard from "../components/DentistCard";
 
+const namespace = "detail-page";
+const API_BASE_URL = "https://jsonplaceholder.typicode.com";
 
-//Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
+const Detail = ({ className }) => {
+  const componentClassNames = classNames(namespace, className);
+  const { id } = useParams();
+  const { data: dentistData, getDentistsData } = useApp();
 
-const Detail = () => {
- 
-  // Consumiendo el parametro dinamico de la URL deberan hacer un fetch a un user en especifico
+  useEffect(() => {
+    getDentistsData(`${API_BASE_URL}/users/${id}`);
+  }, []);
 
   return (
-    <>
-      <h1>Detail Dentist id </h1>
-      {/* aqui deberan renderizar la informacion en detalle de un user en especifico */}
-      {/* Deberan mostrar el name - email - phone - website por cada user en especifico */}
-    </>
-  )
-}
+    <div className={componentClassNames}>
+     <DentistCard type="detail" {...dentistData} /> 
+    </div>
+  );
+};
 
-export default Detail
+Detail.propTypes = {
+  className: PropTypes.string,
+};
+
+Detail.defaultProps = {
+  className: "",
+};
+
+export default Detail;

@@ -1,9 +1,30 @@
 .navbar {
   padding: 10px;
-  background-color: #2E86C1;
+  background-color: #2e86c1;
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.navbar__left {
+  display: flex;
+  align-items: center;
+}
+
+.navbar__logo {
+  margin-right: 20px;
+}
+
+.navbar__logo-text {
+  padding: 0 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #fff;
+}
+
+.navbar__logo-text::first-letter {
+  color: red;
 }
 
 .navbar-list {
@@ -26,4 +47,13 @@
 
 .navbar-list__item:hover {
   cursor: pointer;
+}
+
+
+/*
+  Dark styles
+*/
+
+.app--dark .navbar {
+  background-color: #212f3d;
 }

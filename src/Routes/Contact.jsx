@@ -1,16 +1,27 @@
-import React from 'react'
-// import Form from '../Components/Form'
+import React from "react";
+import PropTypes from "prop-types";
+import classNames from "classnames";
 
-//Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
+const namespace = "contact-page";
 
-const Contact = () => {
+const Contact = ({ className }) => {
+  const componentClassNames = classNames(namespace, className);
+
   return (
-    <div>
+    <div className={componentClassNames}>
       <h2>Want to know more?</h2>
       <p>Send us your questions and we will contact you</p>
       {/* <Form/> */}
     </div>
-  )
-}
+  );
+};
 
-export default Contact
+Contact.propTypes = {
+  className: PropTypes.string,
+};
+
+Contact.defaultProps = {
+  className: "",
+};
+
+export default Contact;

@@ -1,6 +1,12 @@
 
 @import "../components/Toggle/index.css";
 @import "../components/Navbar/index.css";
+@import "../components/Form/index.css";
+@import "../components/TextField/index.css";
+@import "../components/Button/index.css";
+@import "../components/DentistsList/index.css";
+@import "../components/DentistCard/index.css";
+
 
 
 
