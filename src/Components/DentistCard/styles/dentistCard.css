@@ -70,6 +70,7 @@
 
 .dentist-card--detail {
   margin-top: 20px;
+  margin-bottom: 40px;
 }
 
 .dentist-card--detail .dentist-card__name {
@@ -86,6 +87,10 @@
   width: 450px;
   padding: 20px;
   border: 1px solid #d6dbdf;
+}
+
+.dentist-card.dentist-card--detail:hover {
+  cursor: initial;
 }
 
 .dentist-card__list {
