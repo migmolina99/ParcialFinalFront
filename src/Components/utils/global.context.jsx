@@ -38,10 +38,12 @@ export const ContextProvider = ({ children }) => {
         type: actionTypes.SET_DENTISTS_DATA,
         payload: data,
       });
-      dispatch({
-        type: actionTypes.SET_LOADING,
-        payload: false,
-      });
+      setTimeout(() => {
+        dispatch({
+          type: actionTypes.SET_LOADING,
+          payload: false,
+        });
+      }, 500);
     } catch (error) {
       dispatch({
         type: actionTypes.SET_LOADING,
@@ -53,7 +55,7 @@ export const ContextProvider = ({ children }) => {
   const addFavoriteDentist = (dentist) => {
     dispatch({
       type: actionTypes.ADD_FAVORITE_DENTIST,
-      payload: dentist
+      payload: dentist,
     });
   };
 
@@ -65,8 +67,11 @@ export const ContextProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    console.log('Change localStorage');
-    localStorage.setItem("favoriteDentists", JSON.stringify(appState.favorites));
+    console.log("Change localStorage");
+    localStorage.setItem(
+      "favoriteDentists",
+      JSON.stringify(appState.favorites)
+    );
   }, [appState.favorites]);
 
   const value = {

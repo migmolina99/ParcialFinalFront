@@ -3,8 +3,7 @@ import PropTypes from "prop-types";
 import classNames from "classnames";
 import { useApp } from "../../../components/utils/global.context";
 import DentistsList from "../../../components/DentistsList";
-import Spinner from "../../../components/Spinner";
-
+import Loading from "../../../components/Loading";
 
 const namespace = "home-page";
 const API_BASE_URL = "https://jsonplaceholder.typicode.com";
@@ -19,9 +18,14 @@ const Home = ({ className }) => {
 
   return (
     <main className={componentClassNames}>
-      {/* <h1 className={`${namespace}__title`}>Home</h1> */}
-      <Spinner />
-      <DentistsList dentistsList={dentistData} />
+      {loading ? (
+        <Loading />
+      ) : (
+        <>
+          <h1 className={`${namespace}__title`}>Home</h1>
+          <DentistsList dentistsList={dentistData} />
+        </>
+      )}
     </main>
   );
 };

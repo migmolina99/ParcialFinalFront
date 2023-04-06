@@ -19,7 +19,8 @@
 @import "../components/DentistsList/index.css";
 @import "../components/DentistCard/index.css";
 @import "../components/Message/index.css";
-@import "../components/Spinner/";
+@import "../components/Spinner/index.css";
+@import "../components/Loading/index.css";
 @import "../components/Footer/index.css";
 
 

@@ -4,6 +4,7 @@ import classNames from "classnames";
 import { useParams } from "react-router-dom";
 import { useApp } from "../../../components/utils/global.context";
 import DentistCard from "../../../components/DentistCard";
+import Loading from "../../../components/Loading";
 
 const namespace = "detail-page";
 const API_BASE_URL = "https://jsonplaceholder.typicode.com";
@@ -11,7 +12,7 @@ const API_BASE_URL = "https://jsonplaceholder.typicode.com";
 const Detail = ({ className }) => {
   const componentClassNames = classNames(namespace, className);
   const { id } = useParams();
-  const { data: dentistData, getDentistsData } = useApp();
+  const { data: dentistData, loading, getDentistsData } = useApp();
 
   useEffect(() => {
     getDentistsData(`${API_BASE_URL}/users/${id}`);
@@ -19,8 +20,14 @@ const Detail = ({ className }) => {
 
   return (
     <main className={componentClassNames}>
-      <h1 className={`${namespace}__title`}>Detail Dentist { id }</h1>
-      <DentistCard type="detail" {...dentistData} />
+      {loading ? (
+        <Loading />
+      ) : (
+        <>
+          <h1 className={`${namespace}__title`}>Detail Dentist {id}</h1>
+          <DentistCard type="detail" {...dentistData} />
+        </>
+      )}
     </main>
   );
 };
