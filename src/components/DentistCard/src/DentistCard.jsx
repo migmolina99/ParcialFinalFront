@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import classNames from "classnames";
 import doctorInage from "../../../assets/images/doctor.jpg";
 import { useNavigate } from "react-router-dom";
-import { useApp } from "../../utils/global.context";
+import { useApp } from "../../../context/AppContext";
 import icons from "../../icons";
 
 const namespace = "dentist-card";

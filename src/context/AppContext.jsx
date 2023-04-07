@@ -1,12 +1,12 @@
 import { createContext, useContext, useEffect, useReducer } from "react";
 
-import { actionTypes } from "../../reducer/actionTypes";
-import { appReducer } from "../../reducer/appReducer";
+import { appReducer } from "../reducer/appReducer";
+import { actionTypes } from "../reducer/actionTypes";
 
 export const initialState = {
   theme: "",
-  loading: false,
   data: [],
+  loading: false,
   favorites: JSON.parse(localStorage.getItem("favoriteDentists")) || [],
 };
 
@@ -22,11 +22,15 @@ export const ContextProvider = ({ children }) => {
     });
   };
 
-  const getDentistsData = async (url) => {
+  const setLoading = (loading) => {
     dispatch({
       type: actionTypes.SET_LOADING,
-      payload: true,
+      payload: loading,
     });
+  };
+
+  const getDentistsData = async (url) => {
+    setLoading(true);
 
     try {
       const resp = await fetch(url);
@@ -39,16 +43,10 @@ export const ContextProvider = ({ children }) => {
         payload: data,
       });
       setTimeout(() => {
-        dispatch({
-          type: actionTypes.SET_LOADING,
-          payload: false,
-        });
+        setLoading(false);
       }, 500);
     } catch (error) {
-      dispatch({
-        type: actionTypes.SET_LOADING,
-        payload: false,
-      });
+      setLoading(false);
     }
   };
 
@@ -67,11 +65,7 @@ export const ContextProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    console.log("Change localStorage");
-    localStorage.setItem(
-      "favoriteDentists",
-      JSON.stringify(appState.favorites)
-    );
+    localStorage.setItem("favoriteDentists", JSON.stringify(appState.favorites));
   }, [appState.favorites]);
 
   const value = {
@@ -83,7 +77,9 @@ export const ContextProvider = ({ children }) => {
   };
 
   return (
-    <ContextGlobal.Provider value={value}>{children}</ContextGlobal.Provider>
+    <ContextGlobal.Provider value={value}>
+      {children}
+    </ContextGlobal.Provider>
   );
 };
 

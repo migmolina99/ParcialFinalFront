@@ -2,9 +2,9 @@ import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import { useParams } from "react-router-dom";
-import { useApp } from "../../../components/utils/global.context";
 import DentistCard from "../../../components/DentistCard";
 import Loading from "../../../components/Loading";
+import { useApp } from "../../../context/AppContext";
 
 const namespace = "detail-page";
 const API_BASE_URL = "https://jsonplaceholder.typicode.com";

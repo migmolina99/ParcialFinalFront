@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
-import { useApp } from "../../../components/utils/global.context";
 import DentistsList from "../../../components/DentistsList";
 import Loading from "../../../components/Loading";
+import { useApp } from "../../../context/AppContext";
 
 const namespace = "home-page";
 const API_BASE_URL = "https://jsonplaceholder.typicode.com";

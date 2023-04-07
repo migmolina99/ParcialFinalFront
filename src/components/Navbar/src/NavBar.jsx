@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import classNames from "classnames";
 import Toggle from "../../Toggle";
 import { NavLink } from "react-router-dom";
-import { useApp } from "../../utils/global.context";
+import { useApp } from "../../../context/AppContext";
 
 const namespace = "navbar";
 

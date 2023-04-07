@@ -6,7 +6,7 @@ import TextField from "../../../components/TextField";
 import Button from "../../../components/Button";
 import Message from "../../../components/Message";
 import useForm from "../../../hooks/useForm";
-import { useApp } from "../../../components/utils/global.context";
+import { useApp } from "../../../context/AppContext";
 
 const namespace = "contact-page";
 

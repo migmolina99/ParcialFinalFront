@@ -15,8 +15,8 @@ const useForm = (initialValues, validateForm, submitFunction) => {
 
   const handleBlur = (e) => {
     handleChange(e);
-    setSubmited(false);
     setErrors(validateForm(form));
+    setSubmited(false);
   };
 
   const handleSubmit = () => {

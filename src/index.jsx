@@ -5,7 +5,7 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 
 // Context
-import { ContextProvider } from "./components/utils/global.context";
+import { ContextProvider } from "./context/AppContext";
 
 import "./index.css";
 import "./styles/components.css";

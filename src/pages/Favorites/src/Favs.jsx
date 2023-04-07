@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
-import { useApp } from "../../../components/utils/global.context";
 import DentistList from "../../../components/DentistsList";
+import { useApp } from "../../../context/AppContext";
 
 const namespace = "favorites-page";
 

@@ -12,10 +12,8 @@ import FavoritesPage from "./pages/Favorites";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 
-
 // Context
-import { useApp } from "./components/utils/global.context";
-
+import { useApp } from "./context/AppContext";
 
 const namespace = 'app';
 
