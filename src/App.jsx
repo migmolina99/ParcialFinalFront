@@ -2,7 +2,6 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import classNames from "classnames";
 
 // Pages
-// import Home from "./pages/home";
 import HomePage from "./pages/Home";
 import DetailPage from "./pages/Detail";
 import ContactPage from "./pages/Contact";
