@@ -27,7 +27,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/favorites" element={<FavoritesPage />} />
+        <Route path="/favs" element={<FavoritesPage />} />
         <Route path="/detail/:id" element={<DetailPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/*" element={<Navigate to="/" />} />

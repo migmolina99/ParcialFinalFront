@@ -17,13 +17,14 @@ const initialFormValues = {
 
 const valideteForm = (form) => {
   let errors = {};
+  const emailRegex = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
 
-  if (form.name.trim().length < 3) {
-    errors.name = "This field must have at least 3 characters";
+  if (form.name.trim().length < 5) {
+    errors.name = "This field must have at least 5 characters";
   }
 
-  if (form.email.trim().length < 6) {
-    errors.email = "This field must have at least 6 characters";
+  if (!emailRegex.test(form.email)) {
+    errors.email = "This field must have a valid email format";
   }
 
   return errors;

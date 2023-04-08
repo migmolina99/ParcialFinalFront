@@ -37,7 +37,7 @@ const NavBar = ({ className }) => {
           </li>
           <li className={`${namespace}-list__item`}>
             <NavLink
-              to="/favorites"
+              to="/favs"
               className={({ isActive }) =>
                 `${namespace}-list__link ${
                   isActive ? `${namespace}-list__link--active` : ""
